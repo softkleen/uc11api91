@@ -24,7 +24,7 @@ echo "</br>";
 			
 			<?php
             //$dataSistema = new DateTime();
-  			$dataevento = new DateTime('2000-11-13');
+  			$dataevento = new DateTime('2022-11-13');
   			$intervalo = $dataevento->diff($datahorasys);
  			echo $intervalo->format('%m meses, %d dias, %h horas e %i minutos');
 echo "</br>"; 

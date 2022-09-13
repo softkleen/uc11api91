@@ -91,9 +91,10 @@ else if($postjson['requisicao']=='login'){
             'ativo'=>$res[$i]['ativo']
         );
     }
-    if ($query){
+    if (count($res)> 0){
         $result = json_encode(array('success'=>true, 'result'=>$dados));
-    }else{
+    }else {
+
         $result = json_encode(array('success'=>false,'msg'=>"Falha ao efetuar o login!"));
     }
     echo $result;
