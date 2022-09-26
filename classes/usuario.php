@@ -74,7 +74,7 @@ class Usuario{
             ":avatar"=>$this->getAvatar()
         ));
         if(count($res)>0){
-            $this->setData($res[0]);
+            $this->setId($res[0]['id']);
         }
     }
     public function update() : bool{
