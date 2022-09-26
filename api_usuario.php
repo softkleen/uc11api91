@@ -20,8 +20,8 @@ if($postjson['requisicao']=='add'){
     
     $id = $user->insert();
 
-    if($query){
-        $result = json_encode(array('success'=>true,'id'=>$id[0]['id']));
+    if(isset($id)){
+        $result = json_encode(array('success'=>true,'id'=>$id));
     }else{
         $result = json_encode(array('success'=>false,'msg'=>'Falha ao inserir o usuário'));
     }
