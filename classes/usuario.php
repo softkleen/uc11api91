@@ -95,9 +95,14 @@ class Usuario{
         }
 
     }
-    public function delete(){
+    public function delete($_id){
         $sql = new Sql();
-        $sql->query("DELETE FROM usuarios WHERE id = :id",array(":id"=>$this->getId()));
+        $res = $sql->querySql("UPDATE usuarios set ativo = 0 WHERE id = :id",array(":id"=>$_id));
+        return $res;
+    }
+    public function ativar(){
+        $sql = new Sql();
+        $sql->querySql("UPDATE usuarios set ativo = 1 WHERE id = :id",array(":id"=>$this->getId()));
     }
     public function __construct($_nome="", $_usuario="", $_senha="", $_nivel="",$_ativo="",$_avatar=""){
         $this->nome = $_nome;

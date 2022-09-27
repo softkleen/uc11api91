@@ -70,8 +70,8 @@ else if($postjson['requisicao']=='editar'){
 } //final da requisição Editar
 else if($postjson['requisicao']=='excluir'){
     $user = new Usuario();
-    $user->setId($postjson['id']);
-    $res = $user->delete();
+    //$user->setId();
+    $res = $user->delete($postjson['id']);
     if ($res){
         $result = json_encode(array('success'=>true, 'msg'=>"Usuário excluído com sucesso!"));
     }else{
@@ -99,8 +99,10 @@ else if($postjson['requisicao']=='login'){
     echo $result;
 }//final do login
 else if($postjson['requisicao']=='ativar'){
-    $query = $pdo->query("UPDATE usuarios set ativo = 1 where id = $postjson[id]");
-    if ($query){
+    $user = new Usuario();
+    $user->setId($postjson['id']);
+    $res = $user->ativar();
+    if ($res){
         $result = json_encode(array('success'=>true, 'msg'=>"Usuário Ativado com sucesso!"));
     }else{
         $result = json_encode(array('success'=>false,'msg'=>"Falha ao ativar o usuário!"));
