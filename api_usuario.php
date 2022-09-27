@@ -18,12 +18,11 @@ if($postjson['requisicao']=='add'){
                 $postjson['nivel'],null,
                 $postjson['avatar']);
     
-    $id = $user->insert();
-
-    if(isset($id)){
-        $result = json_encode(array('success'=>true,'id'=>$id));
+    $user->insert();
+    if($user->getId()>0){
+        $result = json_encode(array('success'=>true,'id'=>$user->getId()));
     }else{
-        $result = json_encode(array('success'=>false,'msg'=>'Falha ao inserir o usuário'));
+        $result = json_encode(array('success'=>false,'msg'=>'Falha ao inserir o usuário', ''=>$id ));
     }
     echo $result;
 }// final requisição add 
